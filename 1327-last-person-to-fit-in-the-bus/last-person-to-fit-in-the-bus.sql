@@ -7,11 +7,10 @@ Don't select any turn that exceeds the cumulative weight
 Sort overall results in descending order of turn and return top result
 */
 
-
-SELECT q1.person_name
-FROM Queue q1, Queue q2
-WHERE q1.turn >= q2.turn
-GROUP BY q1.turn
-HAVING SUM(q2.weight) <= 1000
-ORDER BY q1.turn DESC
+SELECT person_name
+FROM (
+    SELECT person_name, (SUM(weight) OVER (ORDER BY turn)) AS total_weight
+    FROM Queue) AS cumulative_table
+WHERE total_weight <= 1000
+ORDER BY total_weight DESC
 LIMIT 1
