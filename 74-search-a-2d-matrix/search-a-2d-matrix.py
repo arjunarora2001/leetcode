@@ -22,9 +22,10 @@ class Solution:
             #         break
             mid = floor((start + end) / 2)
             tmp = matrix[mid][-1]
-            if tmp == target:
-                return True
-            elif tmp < target:
+            
+            # if matrix[mid_row][0] <= target <= matrix[mid_row][cols - 1]:
+                # break
+            if tmp < target:
                 if target < matrix[mid + 1][-1]:
                     mid += 1
                     break
@@ -39,6 +40,8 @@ class Solution:
                     end = mid 
                 elif target == matrix[mid][0]:
                     return True
+            elif tmp == target:
+                return True
         # we now have the correct row. perform binary search again
         start = 0
         end = len(matrix[0])
@@ -46,10 +49,11 @@ class Solution:
             rowMid = floor((start + end) / 2)
             if rowMid == start or rowMid == end:
                 return False if matrix[mid][rowMid] != target else True
-            if matrix[mid][rowMid] == target:
-                return True
-            elif matrix[mid][rowMid] > target:
+            
+            if matrix[mid][rowMid] > target:
                 end = rowMid
             elif matrix[mid][rowMid] < target:
                 start = rowMid
+            elif matrix[mid][rowMid] == target:
+                return True
         return False
