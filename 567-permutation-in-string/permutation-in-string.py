@@ -1,10 +1,20 @@
 class Solution:
     def checkInclusion(self, s1: str, s2: str) -> bool:
-        size = len(s1)
-        counter = dict(Counter(s1))
-        # print(counter)
-        for i in range(len(s2) - size + 1):
-            # print(dict(Counter(s2[i:i+size])))
-            if dict(Counter(s2[i:i+size])) == counter:
+        size1 = len(s1)
+        size2 = len(s2)
+        if size1 > size2:
+            return False
+        s1Freq = [0] * 26
+        s2Freq = [0] * 26
+        for i in range(size1):
+            s1Freq[ord(s1[i]) - ord('a')] += 1
+            s2Freq[ord(s2[i]) - ord('a')] += 1
+        if s1Freq == s2Freq:
+            return True
+        for i in range(size1, size2):
+            s2Freq[ord(s2[i]) - ord('a')] += 1
+            s2Freq[ord(s2[i - size1]) - ord('a')] -= 1
+            if s1Freq == s2Freq:
                 return True
         return False
+            
