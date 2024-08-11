@@ -5,7 +5,9 @@ class Solution:
             return x ** 2 + y ** 2
         minHeap = []
         for x, y in points:
-            heapq.heappush(minHeap, [euclid(x, y), [x, y]])
+            minHeap.append([euclid(x, y), [x, y]])
+            # heapq.heappush(minHeap, [euclid(x, y), [x, y]])
+        heapq.heapify(minHeap)
         ans = []
         for _ in range(k):
             ans.append(heapq.heappop(minHeap)[1])
