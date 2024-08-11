@@ -6,10 +6,6 @@ class Solution:
         while len(stones) > 1:
             firstStone = -heapq.heappop(stones)
             secondStone = -heapq.heappop(stones)
-            print(f"{firstStone}, {secondStone}")
-            # firstStone >= secondStone
             if firstStone > secondStone:
                 heapq.heappush(stones, -(firstStone - secondStone))
-        if stones:
-            return -stones[0]
-        return 0
+        return -stones[0] if stones else 0
