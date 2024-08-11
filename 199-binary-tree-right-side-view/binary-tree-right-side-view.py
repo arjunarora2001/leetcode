@@ -10,17 +10,14 @@ class Solution:
         ans = []
         if not root:
             return ans
-        # queue = collections.deque([root])
         queue = collections.deque()
         queue.append(root)
-        # print(queue[-1].val)
-        # ans.append(root.val)
         # simply return the last element of the queue at any given point
         # after returning it, go through the level and push each element's children into the queue
         while queue:
             size = len(queue)
             ans.append(queue[-1].val) # we now have the right-most element
-            for i in range(size):
+            for _ in range(size):
                 curr = queue.popleft()
                 if curr.left:
                     queue.append(curr.left)
