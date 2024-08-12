@@ -20,7 +20,8 @@ class Solution:
             if i - 1 >= 0:
                 dfs(i - 1, j)
             # Process right
-            dfs(i, j + 1)
+            if j + 1 < cols:
+                dfs(i, j + 1)
             # Process down
             dfs(i + 1, j)
             # Process left
