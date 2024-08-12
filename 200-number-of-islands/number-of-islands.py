@@ -26,7 +26,8 @@ class Solution:
             if i + 1 < rows:
                 dfs(i + 1, j)
             # Process left
-            dfs(i, j - 1)
+            if j - 1 >= 0:
+                dfs(i, j - 1)
             if grid[i][j] == '1':
                 return True
         for i in range(rows):
