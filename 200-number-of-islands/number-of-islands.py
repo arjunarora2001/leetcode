@@ -17,7 +17,8 @@ class Solution:
             if grid[i][j] == '0':
                 return False
             # Process up
-            dfs(i - 1, j)
+            if i - 1 >= 0:
+                dfs(i - 1, j)
             # Process right
             dfs(i, j + 1)
             # Process down
