@@ -23,7 +23,8 @@ class Solution:
             if j + 1 < cols:
                 dfs(i, j + 1)
             # Process down
-            dfs(i + 1, j)
+            if i + 1 < rows:
+                dfs(i + 1, j)
             # Process left
             dfs(i, j - 1)
             if grid[i][j] == '1':
