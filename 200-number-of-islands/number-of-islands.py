@@ -7,7 +7,6 @@ class Solution:
         rows = len(grid)
         cols = len(grid[0])
         def dfs(i, j):
-            path = []
             if i < 0 or i >= rows or j < 0 or j >= cols:
                 return False
             if (i, j) in seen:
