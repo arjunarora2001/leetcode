@@ -1,9 +1,10 @@
 class Solution:
     def strStr(self, haystack: str, needle: str) -> int:
-        firstChar = needle[0]
         needleSize = len(needle)
-        haystackSize = len(haystack)
-        for i in range(0, haystackSize - needleSize + 1):
+        if needleSize == 0:
+            return 0
+        firstChar = needle[0]
+        for i in range(0, len(haystack) - needleSize + 1):
             if haystack[i] != firstChar:
                 continue
             else:
