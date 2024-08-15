@@ -16,7 +16,7 @@ class Solution:
                     if numTens >= 1 and numFives >= 1:
                         numTens -= 1
                         numFives -= 1
-                    elif numTens == 0 and numFives >= 3:
+                    elif numFives >= 3:
                         numFives -= 3
                     else:
                         return False
