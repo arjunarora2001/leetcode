@@ -1,27 +1,23 @@
 class Solution:
     def lemonadeChange(self, bills: List[int]) -> bool:
-        register = {
-            5: 0,
-            10: 0,
-            20: 0
-        }
+        numFives = 0
+        numTens = 0
         for customer in bills:
             match customer:
                 case 5:
-                    register[5] += 1
+                    numFives += 1
                 case 10:
-                    if register[5] == 0:
+                    if numFives == 0:
                         return False
                     else:
-                        register[5] -= 1
-                        register[10] += 1
+                        numFives -= 1
+                        numTens += 1
                 case 20:
-                    if register[10] >= 1 and register[5] >= 1:
-                        register[10] -= 1
-                        register[5] -= 1
-                    elif register[10] == 0 and register[5] >= 3:
-                        register[5] -= 3
-                        register[20] += 1
+                    if numTens >= 1 and numFives >= 1:
+                        numTens -= 1
+                        numFives -= 1
+                    elif numTens == 0 and numFives >= 3:
+                        numFives -= 3
                     else:
                         return False
                 case _:
