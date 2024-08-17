@@ -10,12 +10,12 @@ class Solution:
                 indices.append(i)
         
         vowelsWeHave.sort()
-        vowelsWeHave = collections.deque(vowelsWeHave)
+        # vowelsWeHave = collections.deque(vowelsWeHave)
         
         s = list(s)
         
         for i in indices:
-            s[i] = vowelsWeHave.popleft()
+            s[i] = vowelsWeHave.pop(0)
         
         newS = "".join(s)
         return newS
