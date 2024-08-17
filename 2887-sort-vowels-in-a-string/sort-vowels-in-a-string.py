@@ -10,12 +10,14 @@ class Solution:
                 indices.append(i)
         
         vowelsWeHave.sort()
-        vowelsWeHave = collections.deque(vowelsWeHave)
+        heapq.heapify(vowelsWeHave) # min heap
+        # vowelsWeHave = collections.deque(vowelsWeHave)
         
         s = list(s)
         
         for i in indices:
-            s[i] = vowelsWeHave.popleft()
+            # s[i] = vowelsWeHave.popleft()
+            s[i] = heapq.heappop(vowelsWeHave)
         
         newS = "".join(s)
         return newS
