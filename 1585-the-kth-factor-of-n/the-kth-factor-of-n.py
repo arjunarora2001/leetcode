@@ -3,11 +3,11 @@ class Solution:
         # if k == 1:
         #     return 1
         # kCounter = 0
-        factors = set()
+        # factors = set()
         for i in range(1, n + 1):
             if n % i == 0:
-                factors.add(i)
-                if len(factors) == k:
-                    return max(factors)
+                k -= 1
+                if k == 0:
+                    return i
         return -1
         
