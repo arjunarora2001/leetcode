@@ -10,9 +10,7 @@ class Solution:
         if m > 0 and n == 0:
             return
         
-        # p1 = m - 1 # 2
-        # p2 = n - 1 # 2
-        p = m + n - 1 # 5
+        p = m + n - 1
         m -= 1
         n -= 1
         while n >= 0:
@@ -20,7 +18,7 @@ class Solution:
                 nums1[p] = nums2[n]
                 n -= 1
                 p -= 1
-            if nums1[m] > nums2[n]:
+            else:
                 nums1[p] = nums1[m]
                 if m - 1 < 0:
                     nums1[m] = nums2[n]
@@ -30,6 +28,5 @@ class Solution:
                         p -=1
                         n -= 1
                     return
-                # nums1[p1] = nums1[p1 - 1]
                 p -= 1
                 m -= 1
