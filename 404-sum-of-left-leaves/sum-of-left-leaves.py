@@ -7,15 +7,13 @@
 class Solution:
     ans = 0
     def sumOfLeftLeaves(self, root: Optional[TreeNode]) -> int:
-        
-        def dfs(root, side) -> int:
+        def dfs(root, isLeft: bool):
             if not root:
                 return
-            if not root.left and not root.right and side == "Left":
+            if not root.left and not root.right and isLeft:
                 self.ans += root.val
                 return
-            dfs(root.left, "Left")
-            # dfs(root.left)
-            dfs(root.right, "Right")
-        dfs(root, "Root")
+            dfs(root.left, True)
+            dfs(root.right, False)
+        dfs(root, False)
         return self.ans
