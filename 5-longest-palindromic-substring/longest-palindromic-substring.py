@@ -1,32 +1,29 @@
 class Solution:
     def longestPalindrome(self, s: str) -> str:
-        # test all len(s) strings
-        # test all len(s) - 1 strings
-        # test all len(s) - 2 strings
-        # until len(s) - x == 0
-        # return first palindrome
-        if len(s) <= 1:
-            return s
-        def palindromeCheck(start: int, end: int) -> bool:
-            # start = 0
-            # end = len(s) - 1
-            while start < end:
-                if s[start] == s[end]:
-                    start += 1
-                    end -= 1
-                else:
-                    return False
-            return True
-        # if palindromeCheck(0, len(s) - 1):
-        #     return s
-        length = len(s) - 1
-        for _ in range(len(s) - 1, 0, -1):
-            start = 0
-            end = length
-            while end < len(s):
-                if palindromeCheck(start, end):
-                    return s[start:end + 1]
-                start += 1
-                end += 1
-            length -= 1
-        return s[0]
+        longest = s[0]
+        size = len(s)
+        # first calculate longest odd-numbered substrings
+        for i in range(1, size):
+            left = right = i
+            while left - 1 >= 0 and right + 1 < size and s[left - 1] == s[right + 1]:
+                left -= 1
+                right += 1
+            if right - left + 1 > len(longest):
+                longest = s[left : right + 1]
+                # print(f"Odd: {longest}")
+        
+        # now calculate longest even-numbered substrings
+        for i in range(size - 1):
+            left = i
+            right = i + 1
+            if s[left] == s[right]:
+                if len(longest) < 2:
+                    longest = s[left : right + 1]
+                while left - 1 >= 0 and right + 1 < size and s[left - 1] == s[right + 1]:
+                    left -= 1
+                    right += 1
+                if right - left + 1 > len(longest):
+                    longest = s[left : right + 1]
+                    # print(f"Even: {longest}")
+
+        return longest
