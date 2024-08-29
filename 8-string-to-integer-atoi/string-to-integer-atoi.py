@@ -12,16 +12,10 @@ class Solution:
         if not isNegative:
             if incrementer < len(s) and s[incrementer] == '+':
                 incrementer += 1
-        if isNegative:
-            if incrementer < len(s) and s[incrementer] == '+':
-                return 0
-        hasZero = False
         while incrementer < len(s) and s[incrementer] == '0':
-            hasZero = True
             incrementer += 1
         
         ans = ""
-        numbers = set({0,1,2,3,4,5,6,7,8,9})
         for i in range(incrementer, len(s)):
             if not s[i].isalnum():
                 break
