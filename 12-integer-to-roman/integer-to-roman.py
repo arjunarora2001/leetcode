@@ -1,17 +1,6 @@
 class Solution:
     def intToRoman(self, num: int) -> str:
         ans = ""
-        numStr = str(num)
-        mapping = {
-            1: 'I',
-            5: 'V',
-            10: 'X',
-            50: 'L',
-            100: 'C',
-            500: 'D',
-            1000: 'M'
-        }
-        values = sorted(mapping.keys(), reverse=True)
         # while num > 0:
             # this works easily since the maximum number is 3999
         while num >= 1000:
