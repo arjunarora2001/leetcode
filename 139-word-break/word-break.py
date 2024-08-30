@@ -17,8 +17,8 @@ class Solution:
 
         for i in range(size, -1, -1):
             for w in wordDict:
-                if (i + len(w)) > size:
-                    continue
+                # if (i + len(w)) > size:
+                #     continue
                 if s[i : i + len(w)] == w:
                     dp[i] = dp[i + len(w)]
                 if dp[i]:
