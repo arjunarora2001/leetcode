@@ -3,9 +3,7 @@ class Solution:
         res = []
         size = len(candidates)
         def dfs(index: int, arr: List[int], total: int):
-            if index >= size:
-                return False
-            if total > target:
+            if index >= size or total > target:
                 return False
             elif total == target:
                 res.append(arr.copy())
