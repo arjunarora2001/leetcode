@@ -1,32 +1,24 @@
 class Solution:
     def isValid(self, s: str) -> bool:
-        # Tests:
-        # (([]))
-        # (({[]}))
-        stack = deque()
-        # traverse through all the characters in the string
+        stack = []
         for i in s:
-            if i == '(' or i == '{' or i == '[':
+            if i == '(' or i == '[' or i == '{':
                 stack.append(i)
             else:
-                if len(stack) == 0:
+                if not stack:
                     return False
-                match i:
-                    case ')':
-                        if stack[-1] == '(':
-                            stack.pop()
-                        else:
-                            return False 
-                    case '}':
-                        if stack[-1] == '{':
-                            stack.pop()
-                        else:
-                            return False 
-                    case ']':
-                        if stack[-1] == '[':
-                            stack.pop()
-                        else:
-                            return False 
+                bracket = stack.pop()
+                match bracket:
+                    case '(':
+                        if i != ')':
+                            return False
+                    case '{':
+                        if i != '}':
+                            return False
+                    case '[':
+                        if i != ']':
+                            return False
                     case _:
                         return False
-        return len(stack) == 0
+        
+        return not stack
