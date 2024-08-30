@@ -17,14 +17,12 @@ class Solution:
 
         for i in range(size, -1, -1):
             for w in wordDict:
-                if dp[i] or (i + len(w)) > size:
+                if (i + len(w)) > size:
                     continue
                 if s[i : i + len(w)] == w:
-                    # print(s[i : i + len(w)])
                     dp[i] = dp[i + len(w)]
-                if dp[0] == True:
-                    return True
-        # print(dp)
+                if dp[i]:
+                    break
         return dp[0]
 
 
