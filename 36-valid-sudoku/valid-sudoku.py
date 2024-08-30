@@ -1,30 +1,20 @@
 class Solution:
     def isValidSudoku(self, board: List[List[str]]) -> bool:
-        # we know it's 9x9, so we can iterate through each box
-        # BRUTE-FORCE:
-        # iterate through each row
-        # iterate through each column
-        # iterate through each box
-        # return false if any condition broken, else return true
-        # very inefficient
-        rows = collections.defaultdict(set)
-        # row[0] = [5, 3, 7]
-        cols = collections.defaultdict(set)
-        # col[0] = [5, 6, 8, 4, 7]
-        boxes = collections.defaultdict(set)
-        # box[0] = [5, 3, 6, 9, 8]
-        # boxNum = 0
-        for i in range(len(board)):
-            # boxNum += 1
-            for j in range(len(board[0])):
-                num = board[i][j]
+        # BRUTE FORCE - individually check each row, column, box
+        # However, that requires three passes
+        # We could come up with a solution that uses only one pass
+        # We could use a dictionary of sets
+        rows = {i : set() for i in range(0, 9)}
+        cols = {i : set() for i in range(0, 9)}
+        boxes = {i : set() for i in range(0, 9)}
+        for row in range(len(board)):
+            for col in range(len(board[0])):
+                num = board[row][col]
                 if num == '.':
                     continue
-                boxNum = (i // 3, j // 3)
-
-                if num in rows[i] or num in cols[j] or num in boxes[boxNum]:
+                if num in rows[row] or num in cols[col] or num in boxes[((row // 3) * 3 + col // 3)]:
                     return False
-                rows[i].add(num)
-                cols[j].add(num)
-                boxes[boxNum].add(num)
+                rows[row].add(num)
+                cols[col].add(num)
+                boxes[((row // 3) * 3 + col // 3)].add(num)
         return True
