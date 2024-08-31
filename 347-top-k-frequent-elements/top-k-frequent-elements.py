@@ -1,7 +1,14 @@
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        # print(Counter(nums))
-        d = dict(Counter(nums).items())
-        sortedDict = dict(sorted(d.items(), key=lambda item: item[1], reverse=True))
-        keys = list(sortedDict.keys())
-        return keys[:k]
+        if k >= len(nums):
+            return nums
+        freq = collections.defaultdict(int)
+        for num in nums:
+            freq[num] += 1
+        maxHeap = []
+        for key, value in freq.items():
+            heapq.heappush(maxHeap, (-value, key))
+        ans = []
+        for _ in range(k):
+            ans.append(heapq.heappop(maxHeap)[1])
+        return ans
