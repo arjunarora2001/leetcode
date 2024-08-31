@@ -1,14 +1,16 @@
 class Solution:
     def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:
-        def euclid(x, y):
-            # x2 and y2 are always 0 since we start at origin
-            return x ** 2 + y ** 2
-        minHeap = []
+        """
+        for each point, calculate the distance from the origin
+        then, put that into a minHeap with (distance, (x, y))
+        then, k times, pop from the heap and append to a res array
+        return res
+        """
+        distances = []
         for x, y in points:
-            minHeap.append([euclid(x, y), [x, y]])
-            # heapq.heappush(minHeap, [euclid(x, y), [x, y]])
-        heapq.heapify(minHeap)
-        ans = []
+            distances.append(((x ** 2) + (y ** 2), [x, y]))
+        heapq.heapify(distances)
+        res = []
         for _ in range(k):
-            ans.append(heapq.heappop(minHeap)[1])
-        return ans
+            res.append(heapq.heappop(distances)[1])
+        return res
