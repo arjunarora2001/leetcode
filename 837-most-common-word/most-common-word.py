@@ -1,6 +1,7 @@
 class Solution:
     def mostCommonWord(self, paragraph: str, banned: List[str]) -> str:
         ends = set("!?',;. ")
+        banned = set(banned)
         freq = {}
         pointer = 0
         for char in range(len(paragraph)):
