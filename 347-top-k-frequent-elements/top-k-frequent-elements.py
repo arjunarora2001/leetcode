@@ -3,10 +3,13 @@ class Solution:
         if k >= len(nums):
             return nums
         freq = Counter(nums)
-        maxHeap = []
+        # minHeap of only k elements
+        minHeap = []
         for key, value in freq.items():
-            heapq.heappush(maxHeap, (-value, key))
+            heapq.heappush(minHeap, (value, key))
+            if len(minHeap) > k:
+                heapq.heappop(minHeap)
         ans = []
         for _ in range(k):
-            ans.append(heapq.heappop(maxHeap)[1])
+            ans.append(heapq.heappop(minHeap)[1])
         return ans
