@@ -1,19 +1,31 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        # BRUTE FORCE: O(n^2)
-        # Calculate every single combination and return largest
-        size = len(prices)
-        # maxProfit = 0
-        # for i in range(size - 1):
-        #     for j in range(i + 1, size):
-        #         if prices[i] >= prices[j]:
-        #             continue
+        lowestPrice = 10 ** 4
+        maximum = 0
+        for price in prices:
+            lowestPrice = min(price, lowestPrice)
+            maximum = max(maximum, price - lowestPrice)
+        return maximum
+        # size = len(prices)
+        # j = 1
+        # i = 0
+        # while j < size and i < size - 1:
+        #     if prices[j] <= prices[i]:
+        #         j += 1
+        #         i += 1
+        #     else:
+        #         break
+        # if j == size:
+        #     return 0
+        # maximum = 0
+        # minVal = min(prices)
+        # for i in range(j - 1, size - 1):
+        #     localMax = max(prices[i + 1 : size]) - prices[i]
+        #     if localMax <= 0:
+        #         continue
+        #     else:
+        #         if prices[i] == minVal and localMax > maximum:
+        #             return localMax
         #         else:
-        #             maxProfit = max(prices[j] - prices[i], maxProfit)
-        # return maxProfit
-        lowest = prices[0] # lowest UP UNTIL THAT POINT
-        maxProfit = 0
-        for i in range(size):
-            maxProfit = max(maxProfit, prices[i] - lowest)
-            lowest = min(lowest, prices[i])
-        return maxProfit
+        #             maximum = max(maximum, localMax)
+        # return maximum
