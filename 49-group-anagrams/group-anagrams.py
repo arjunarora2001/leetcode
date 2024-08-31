@@ -12,7 +12,4 @@ class Solution:
                 d[sortedString].append(s)
             else:
                 d[sortedString] = [s]
-        res = []
-        for value in d.values():
-            res.append(value)
-        return res
+        return list(d.values())
