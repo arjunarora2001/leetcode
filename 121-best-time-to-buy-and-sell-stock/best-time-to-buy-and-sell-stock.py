@@ -3,8 +3,10 @@ class Solution:
         lowestPrice = prices[0]
         maximum = 0
         for price in prices[1:]:
-            lowestPrice = min(price, lowestPrice)
-            maximum = max(maximum, price - lowestPrice)
+            if price < lowestPrice:
+                lowestPrice = price
+            elif price - lowestPrice > maximum:
+                maximum = price - lowestPrice
         return maximum
         # size = len(prices)
         # j = 1
