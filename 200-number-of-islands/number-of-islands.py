@@ -32,6 +32,7 @@ class Solution:
 
         for row in range(rows):
             for col in range(cols):
-                if dfs(row, col):
-                    islands += 1
+                if (row, col) not in seen and grid[row][col] == '1':
+                    if dfs(row, col):
+                        islands += 1
         return islands
