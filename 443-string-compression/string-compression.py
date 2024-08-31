@@ -15,17 +15,3 @@ class Solution:
                     chars[index] = j
                     index += 1
         return index
-        # end = 0
-        # for index in range(len(chars)):
-        #     end = index + 1
-        #     while end < len(chars) and chars[end] == chars[index]:
-        #         end += 1
-        #     freq = str(end - index)
-        #     indexCopy = index + 1
-        #     if end - index >= 2:
-        #         for i in freq:
-        #             chars[indexCopy] = i
-        #             indexCopy += 1
-        #         del chars[indexCopy : end]
-        #         end = indexCopy
-        # return len(chars)
