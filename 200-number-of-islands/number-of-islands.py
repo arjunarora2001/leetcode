@@ -4,15 +4,13 @@ class Solution:
         # keep searching until all land plots have been found
         # increment count from each point
         # dfs func must return a bool
-        # seen = set()
         islands = 0
         rows = len(grid)
         cols = len(grid[0])
 
         def isValid(row: int, col: int):
-            if row < 0 or row >= rows or col < 0 or col >= cols or grid[row][col] != '1':
+            if grid[row][col] != '1':
                 return False
-            # seen.add((row, col))
             return True
 
         def dfs(row: int, col: int) -> bool:
@@ -20,13 +18,17 @@ class Solution:
                 return False
             grid[row][col] = '0'
             # north
-            dfs(row - 1, col)
+            if row - 1 >= 0:
+                dfs(row - 1, col)
             # east
-            dfs(row, col + 1)
+            if col + 1 < cols:
+                dfs(row, col + 1)
             # south
-            dfs(row + 1, col)
+            if row + 1 < rows:
+                dfs(row + 1, col)
             # west
-            dfs(row, col - 1)
+            if col - 1 >= 0:
+                dfs(row, col - 1)
             return True
 
 
