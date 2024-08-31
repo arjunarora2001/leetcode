@@ -1,6 +1,5 @@
 class Solution:
     def mostCommonWord(self, paragraph: str, banned: List[str]) -> str:
-        words = paragraph.split(" ")
         ends = set("!?',;. ")
         freq = {}
         pointer = 0
@@ -27,21 +26,6 @@ class Solution:
                         freq[word] = 1
                 else:
                     freq[word] = 0
-        # print(freq)
-
-
-
-
-        # for word in words:
-        #     if word[-1] in ends:
-        #         word = word[0 : len(word) - 1]
-        #     word = word.lower()
-        #     if word not in banned:
-        #         if word not in freq:
-        #             freq[word] = 1
-        #         else:
-        #             freq[word] += 1
-        # # print(freq)
         maxWord = ""
         maxFreq = 0
         for word, frequency in freq.items():
