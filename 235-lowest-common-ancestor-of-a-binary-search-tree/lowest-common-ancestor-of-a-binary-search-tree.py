@@ -14,6 +14,7 @@ class Solution:
                 root = root.left
             else:
                 return root
+        return None
         # if not root or p == root or q == root:
         #     return root
         # if (p.val < root.val) and (q.val < root.val):
