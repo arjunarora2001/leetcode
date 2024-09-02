@@ -5,11 +5,6 @@
 #         self.next = next
 class Solution:
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
-        if not l1:
-            return l2
-        if not l2:
-            return l1
-        
         carry = False
         ans = ListNode(-1)
         iterator = ans
