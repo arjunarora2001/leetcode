@@ -1,8 +1,6 @@
 class Solution:
     def longestCommonPrefix(self, strs: List[str]) -> str:
         pre = ""
-        if pre in strs:
-            return pre
         preIndex = 0
         size = len(strs)
         while preIndex < len(strs[0]):
