@@ -12,7 +12,7 @@ class Solution:
         # [1,...,maxPiles] -> answer lies somewhere here
         minVal = maxPiles
         # lower bound
-        left = 1
+        left = ceil(sum(piles) / h)
         right = maxPiles
         while left <= right:
             mid = (left + right) // 2
