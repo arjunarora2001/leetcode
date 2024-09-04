@@ -3,7 +3,6 @@ class Solution:
         if amount == 0:
             return 0
         dp = [2 ** 31] * (amount + 1)
-        c = set(coins)
         """
         dp[0] = 1 coin of 1
         dp[1] = 1 coin of 2
