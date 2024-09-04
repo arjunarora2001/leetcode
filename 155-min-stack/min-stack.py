@@ -14,10 +14,7 @@ class MinStack:
         return self.stack[-1]
 
     def getMin(self) -> int:
-        minVal = self.stack[0]
-        for elem in self.stack[1:]:
-            minVal = min(minVal, elem)
-        return minVal
+        return min(self.stack)
         
 
 
